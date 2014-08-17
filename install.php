@@ -60,7 +60,7 @@ SQL
   <button type="submit">Retry</button>
 </form>
   <?php } else {
-fuckyourself: ?>
+hell: ?>
 
 <h2>Step 1: Login details</h2>
 <form method="POST">
@@ -75,7 +75,7 @@ fuckyourself: ?>
 <?php }} else if (isset($_POST['step2'])) { // step2: create user
   if ($_POST['password'] !== $_POST['passwordconfirm']) {
     echo "<p>The passwords did not match</p>";
-    goto fuckyourself; // the goto keyword was introduced in PHP 5.3... so why don't use it?
+    goto hell; // the goto keyword was introduced in PHP 5.3... so why don't use it?
   }
   $sql_str = "INSERT INTO `config` (`key`, `value`) VALUES ('sitename', '" . $sql->real_escape_string($_POST['sitename']) . "'); " .
              "INSERT INTO `config` (`key`, `value`) VALUES ('username', '" . $sql->real_escape_string($_POST['username']) . "'); " .
