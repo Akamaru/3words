@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `words` (
   `word2` VARCHAR(45) NULL,
   `word3` VARCHAR(45) NULL,
   `author` VARCHAR(45) NULL,
+  `new` BOOLEAN,
   `created_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -79,7 +80,9 @@ hell: ?>
   }
   $sql_str = "INSERT INTO `config` (`key`, `value`) VALUES ('sitename', '" . $sql->real_escape_string($_POST['sitename']) . "'); " .
              "INSERT INTO `config` (`key`, `value`) VALUES ('username', '" . $sql->real_escape_string($_POST['username']) . "'); " .
-             "INSERT INTO `config` (`key`, `value`) VALUES ('password', '" . $sql->real_escape_string(crypt_password($_POST['password'], gen_salt(22))) . "');";
+             "INSERT INTO `config` (`key`, `value`) VALUES ('password', '" . $sql->real_escape_string(crypt_password($_POST['password'], gen_salt(22))) . "'); " .
+             "INSERT INTO `config` (`key`, `value`) VALUES ('recent_public', 'false'); " .
+             "INSERT INTO `config` (`key`, `value`) VALUES ('recent_count', '5');";
   if (!$sql->multi_query($sql_str)) { ?>
 <h2>An error occurred</h2>
 <pre><?php echo $sql->error; ?></pre>
