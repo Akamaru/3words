@@ -1,0 +1,20 @@
+{include="layout"}
+{include="navbar"}
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked nav-justified">
+      <li {if="$ucp_page === 'inbox'"} class="active"{/if}>Inbox</li>
+      <li {if="$ucp_page === 'settings'"} class="active"{/if}>Settings</li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+  {if="$ucp_page === 'inbox'"}
+    {include="inbox"}
+  {else}
+    {include="settings"}
+  {/if}
+  </div>
+</div>
+</div>
+{include="footer"}
