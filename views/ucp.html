@@ -1,6 +1,7 @@
 {include="layout"}
 {include="navbar"}
 <div class="container">
+{if="$logged_in"}
 <div class="row">
   <div class="col-md-3">
     <ul class="nav nav-pills nav-stacked nav-justified">
@@ -16,5 +17,8 @@
   {/if}
   </div>
 </div>
+{else}
+  {include="login"}
+{/if}
 </div>
 {include="footer"}
