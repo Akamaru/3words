@@ -1,0 +1,9 @@
+<h4>Answers you got:</h4>
+
+<table class="table table-responsive table-bordered table-condensed">
+<tbody>
+{loop="$words"}
+  <td>{$value.author} wrote that you are <span class="label label-default">{$value.first}</span>, <span class="label label-default">{$value.second}</span> and <span class="label label-default">{$value.third}</span></td>
+{/loop}
+</tbody>
+</table>
