@@ -22,3 +22,11 @@
 .float-right {
     float: right;
 }
+
+.footer-lm {
+  margin-left: 10px;
+}
+
+.footer-rm {
+  margin-right: 10px;
+}
