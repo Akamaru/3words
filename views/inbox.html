@@ -16,7 +16,9 @@
   <table class="table table-responsive table-bordered table-condensed">
     <tbody>
     {loop="$words"}
-      <tr><td>{$value.author} wrote that you are <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span></td></tr>
+      <tr>
+        <td><b>{$value.author}</b> wrote that you are <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span></td>
+      </tr>
     {/loop}
     </tbody>
   </table>
