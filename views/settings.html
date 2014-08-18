@@ -1,29 +1,44 @@
-<form role="form">
-  <div class="form-group">
-    <label for="sitename">Site Name</label>
-    <input type="text" class="form-control" id="sitename" placeholder="3 words about your mom">
+{include="layout"}
+{include="navbar"}
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked nav-justified">
+      <li>Inbox</li>
+      <li class="active">Settings</li>
+    </ul>
   </div>
-  <div class="checkbox">
-    <label>
-      <input id="recent_check" type="checkbox"> Showing Recent Answers
-    </label>
+  <div class="col-md-9">
+    <form role="form">
+      <div class="form-group">
+        <label for="sitename">Site Name</label>
+        <input type="text" class="form-control" id="sitename" placeholder="3 words about your mom">
+      </div>
+      <div class="checkbox">
+        <label>
+          <input id="recent_check" type="checkbox"> Showing Recent Answers
+        </label>
+      </div>
+      <!-- TODO: Javascript disabling this form if above checkbox is unchecked -->
+      <div class="form-group">
+        <label for="recent">Recent Answers</label>
+        <input type="number" class="form-control" id="recent_count" value="5" disabled>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <hr/>
+    <form role="form">
+      <div class="form-group">
+        <label for="password_change">New Password</label>
+        <input type="password" class="form-control" id="password_change" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="password_verify">Repeat New Password</label>
+        <input type="password" class="form-control" id="password_verify" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-default">Change Password</button>
+    </form>
   </div>
-  <!-- TODO: Javascript disabling this form if above checkbox is unchecked -->
-  <div class="form-group">
-    <label for="recent">Recent Answers</label>
-    <input type="number" class="form-control" id="recent_count" value="5" disabled>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-<hr/>
-<form role="form">
-  <div class="form-group">
-    <label for="password_change">New Password</label>
-    <input type="password" class="form-control" id="password_change" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="password_verify">Repeat New Password</label>
-    <input type="password" class="form-control" id="password_verify" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-default">Change Password</button>
-</form>
+</div>
+</div>
+{include="footer"}

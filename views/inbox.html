@@ -1,9 +1,23 @@
-<h4>Answers you got:</h4>
-
-<table class="table table-responsive table-bordered table-condensed">
-<tbody>
-{loop="$words"}
-  <td>{$value.author} wrote that you are <span class="label label-default">{$value.first}</span>, <span class="label label-default">{$value.second}</span> and <span class="label label-default">{$value.third}</span></td>
-{/loop}
-</tbody>
-</table>
+{include="layout"}
+{include="navbar"}
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked nav-justified">
+      <li class="active">Inbox</li>
+      <li>Settings</li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+  <h4>Answers you got:</h4>
+  <table class="table table-responsive table-bordered table-condensed">
+    <tbody>
+    {loop="$words"}
+      <td>{$value.author} wrote that you are <span class="label label-default">{$value.first}</span>, <span class="label label-default">{$value.second}</span> and <span class="label label-default">{$value.third}</span></td>
+    {/loop}
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
+{include="footer"}
