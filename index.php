@@ -64,4 +64,22 @@ if (isset($_POST['words'])) {
   exit();
 }
 
+$words = array();
+
+if ($recent_public) {
+  $sql_str = "SELECT `word1`, `word2`, `word3`, `author`, `new` FROM `words` ORDER BY `id` DESC LIMIT " . $recent_count . ";";
+  $res = $sql->query($sql_str);
+  
+  while ($r = $res->fetch_assoc()) {
+    array_push($words, array(
+      "word1"  =>  $r['word1'],
+      "word2"  =>  $r['word2'],
+      "word3"  =>  $r['word3'],
+      "author" =>  $r['author'],
+      "new"    => ($r['new'] == 1 ? true : false)
+    ));
+  }
+}
+
+$tpl->assign("words", $words);
 $tpl->draw("index");
