@@ -77,7 +77,7 @@ if (!isset($notemplate)) {
   $recent_public = $res['value'] === "true" ? true : false;
   $recent_count = 0;
   if ($recent_public) {
-    $res = $sql->query("SELECT `value` FROM `config` WHERE `key` = \"recent_public\";")->fetch_assoc();
+    $res = $sql->query("SELECT `value` FROM `config` WHERE `key` = \"recent_count\";")->fetch_assoc();
     $recent_count = (int) $res['value'];
   }
   
