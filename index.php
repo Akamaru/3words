@@ -67,11 +67,12 @@ if (isset($_POST['words'])) {
 $words = array();
 
 if ($recent_public) {
-  $sql_str = "SELECT `word1`, `word2`, `word3`, `author`, `new` FROM `words` ORDER BY `id` DESC LIMIT " . $recent_count . ";";
+  $sql_str = "SELECT `id`, `word1`, `word2`, `word3`, `author`, `new` FROM `words` ORDER BY `id` DESC LIMIT " . $recent_count . ";";
   $res = $sql->query($sql_str);
   
   while ($r = $res->fetch_assoc()) {
     array_push($words, array(
+      "id"     =>  $r['id'],
       "word1"  =>  $r['word1'],
       "word2"  =>  $r['word2'],
       "word3"  =>  $r['word3'],

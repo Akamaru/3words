@@ -20,15 +20,40 @@
 
 include_once 'config.php';
 
-function check_privileges() {
+function check_privileges($ajax = false) {
   if (!$_SESSION['logged_in']) {
-    $_SESSION['flash'] = "Log in to continue.";
-    header('Location: ucp.php?page=login');
+    if ($ajax) {
+      header('Content-Type: application/javascript');
+      echo json_encode(array("success" => false));
+    } else {
+      $_SESSION['flash'] = "Log in to continue.";
+      header('Location: ucp.php?page=login');
+    }
     exit();
   }
 }
 
 switch ($_GET['page']) {
+  case "ajax": {
+    check_privileges(true);
+    header('Content-Type: application/javascript');
+    $response = array("success" => false);
+    switch ($_GET['action']) {
+      case "delete-word": {
+        if (isset($_GET['id'])) {
+          if (is_numeric($_GET['id'])) {
+            $id = (int) $_GET['id'];
+            if ($sql->query("DELETE FROM `words` WHERE `id`=" . $id . ";")) {
+              $response["success"] = true;
+            }
+          }
+        }
+        break;
+      }
+    }
+    echo json_encode($response);
+    break;
+  }
   case "login": {
     if ($_SESSION['logged_in']) {
       $_SESSION['flash'] = "You're already logged in.";
@@ -121,13 +146,14 @@ switch ($_GET['page']) {
   default: {
     check_privileges();
     
-    $sql_str = "SELECT `word1`, `word2`, `word3`, `author`, `new` FROM `words`;";
+    $sql_str = "SELECT `id`, `word1`, `word2`, `word3`, `author`, `new` FROM `words`;";
     $res = $sql->query($sql_str);
     
     $words = array();
     
     while ($r = $res->fetch_assoc()) {
       array_push($words, array(
+        "id"     =>  $r['id'],
         "word1"  =>  $r['word1'],
         "word2"  =>  $r['word2'],
         "word3"  =>  $r['word3'],
