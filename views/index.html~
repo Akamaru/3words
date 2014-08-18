@@ -1,0 +1,59 @@
+{include="layout"}
+{include="navbar"}
+<div class="container">
+{if="$message"}
+<div class="alert alert-info">{$message}</div>
+{/if}
+<h1 class="text-center">{$site_name}!</h1>
+<form method="POST">
+  <p class="text-center">Want to tell them who you are? <input name="author" type="text" class="input-xs" placeholder="Anonymous"></p>
+  <div class="row">
+    <div class="col-md-4 rowm">
+      <input name="word1" type="text" class="form-control" placeholder="First Word">
+    </div>
+    <div class="col-md-4 rowm">
+      <input name="word2" type="text" class="form-control" placeholder="Second Word">
+    </div>
+    <div class="col-md-4 rowm">
+      <input name="word3" type="text" class="form-control" placeholder="Third Word">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+    </div>
+  </div>
+  <input type="hidden" name="words">
+</form>
+<<<<<<< HEAD
+{if="$recent_answers"}
+<div class="row recent-margin">
+  <div class="col-md-8">
+    <h4>Recent Answers by others:</h4>
+    <table class="table table-responsive table-bordered table-condensed">
+      <tbody>
+        {loop="$recent"}
+          <tr>
+            <td><b>{$value.author}</b> wrote that {$user_name} is <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span></td>
+          </tr>
+        {/loop}
+      </tbody>
+    </table>
+  </div>
+</div>
+=======
+{if="$recent_public"}
+<h4>Recent Answers by others:</h4>
+<table class="table table-responsive table-bordered table-condensed">
+  <tbody>
+    {loop="$words"}
+      <tr>
+        <td><b>{$value.author}</b> wrote that {$user_name} is <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span></td>
+      </tr>
+    {/loop}
+  </tbody>
+</table>
+>>>>>>> 95c4db170369fc5edd52d9277936175e39c5816c
+{/if}
+</div>
+{include="footer"}

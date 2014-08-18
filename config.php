@@ -72,6 +72,15 @@ if (!isset($notemplate)) {
   $res = $sql->query("SELECT `value` FROM `config` WHERE `key` = \"username\";")->fetch_assoc();
   $user_name = htmlspecialchars($res['value']);
   
+  // show recent?
+  $res = $sql->query("SELECT `value` FROM `config` WHERE `key` = \"recent_public\";")->fetch_assoc();
+  $recent_public = $res['value'] === "true" ? true : false;
+  $recent_count = 0;
+  if ($recent_public) {
+    $res = $sql->query("SELECT `value` FROM `config` WHERE `key` = \"recent_count\";")->fetch_assoc();
+    $recent_count = (int) $res['value'];
+  }
+  
   // the flash
   $message = null;
   if (isset($_SESSION['flash'])) {
@@ -84,5 +93,7 @@ if (!isset($notemplate)) {
   $tpl->assign("user_name", $user_name);
   $tpl->assign("words_total", $words_total_count);
   $tpl->assign("inbox_count", $new_words_count);
+  $tpl->assign("recent_public", $recent_public);
+  $tpl->assign("recent_count", $recent_count);
   $tpl->assign("message", $message);
 }
