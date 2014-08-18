@@ -19,15 +19,14 @@
       </div>
       <div class="checkbox">
         <label>
-          <input id="recent_check" type="checkbox"> Showing Recent Answers
+          <input id="recent_check" type="checkbox" onchange="a(!this.checked)"> Showing Recent Answers
         </label>
       </div>
-      <!-- TODO: Javascript disabling this form if above checkbox is unchecked -->
       <div class="form-group">
         <label for="recent">Recent Answers</label>
-        <input type="number" class="form-control" id="recent_count" value="5" disabled>
+        <input type="number" class="form-control" id="recent-count" name="recent_count" value="5">
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default" id="recent-btn">Submit</button>
     </form>
     <hr/>
     <form role="form">
