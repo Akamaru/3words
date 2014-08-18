@@ -1,6 +1,9 @@
 {include="layout"}
 {include="navbar"}
 <div class="container">
+{if="$message"}
+<div class="alert alert-info">{$message}</div>
+{/if}
 <div class="row">
   <div class="col-md-3">
     <ul class="nav nav-pills nav-stacked nav-justified">

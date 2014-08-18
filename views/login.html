@@ -1,6 +1,9 @@
 {include="layout"}
 {include="navbar"}
 <div class="container">
+{if="$message"}
+<div class="alert alert-info">{$message}</div>
+{/if}
   <form role="form" method="POST">
     <div class="form-group">
       <label for="InputUsername">Username</label>

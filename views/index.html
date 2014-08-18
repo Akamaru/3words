@@ -1,6 +1,9 @@
 {include="layout"}
 {include="navbar"}
 <div class="container">
+{if="$message"}
+<div class="alert alert-info">{$message}</div>
+{/if}
 <h1>{$site_name}!</h1>
 <p>Want to tell them who you are? <input id="author" type="text" class="form-control" placeholder="Anonymous"></p>
 <div class="row">
