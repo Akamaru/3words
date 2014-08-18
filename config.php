@@ -68,6 +68,10 @@ if (!isset($notemplate)) {
   $res = $sql->query("SELECT `value` FROM `config` WHERE `key` = \"sitename\";")->fetch_assoc();
   $site_name = htmlspecialchars($res['value']);
   
+  // user name
+  $res = $sql->query("SELECT `value` FROM `config` WHERE `key` = \"username\";")->fetch_assoc();
+  $user_name = htmlspecialchars($res['value']);
+  
   // the flash
   $message = null;
   if (isset($_SESSION['flash'])) {
@@ -77,6 +81,7 @@ if (!isset($notemplate)) {
   
   $tpl->assign("logged_in", $_SESSION['logged_in']);
   $tpl->assign("site_name", $site_name);
+  $tpl->assign("user_name", $user_name);
   $tpl->assign("words_total", $words_total_count);
   $tpl->assign("inbox_count", $new_words_count);
   $tpl->assign("message", $message);
