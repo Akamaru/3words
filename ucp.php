@@ -30,6 +30,7 @@ switch ($_GET['page']) {
     session_start();
     $_SESSION['flash'] = "Sucessfully logged out";
     header('Location: index.php');
+    exit();
     break;
   }
   case "settings": {
