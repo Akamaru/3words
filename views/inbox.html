@@ -7,17 +7,17 @@
 <div class="row">
   <div class="col-md-3">
     <ul class="nav nav-pills nav-stacked">
-      <li class="active"><a href="#">Inbox</a></li>
+      <li class="active"><a href="ucp.php?page=inbox">Inbox</a></li>
       <li><a href="ucp.php?page=settings">Settings</a></li>
     </ul>
   </div>
   <div class="col-md-9">
-  <h4>Answers you got:</h4>
+  <h4>Words sent to you:</h4>
   <table class="table table-responsive table-bordered table-condensed">
     <tbody>
     {loop="$words"}
       <tr>
-        <td><b>{$value.author}</b> wrote that you are <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span></td>
+        <td><b>{$value.author}</b> thinks that you are <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span></td>
       </tr>
     {/loop}
     </tbody>
