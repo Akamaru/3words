@@ -15,32 +15,32 @@
     <form role="form" action="ucp.php?page=settings" method="POST">
       <div class="form-group">
         <label for="sitename">Site Name</label>
-        <input type="text" class="form-control" id="sitename" placeholder="3 words about your mom" value="{$site_name}">
+        <input type="text" class="form-control" name="sitename" placeholder="3 words about your mom" value="{$site_name}">
       </div>
       <div class="checkbox">
         <label>
-          <input id="recent_check" type="checkbox" onchange="a(!this.checked)"{if="$recent_public"} checked{/if}> Show Recent Answers
+          <input id="recent_check" name="recent_check" type="checkbox" onchange="a(!this.checked)"{if="$recent_public"} checked{/if}> Show Recent Answers
         </label>
       </div>
       <div class="form-group">
         <label for="recent">Recent Answers</label>
-        <input type="number" class="form-control" id="recent-count" name="recent_count" value="5"{if="!$recent_public"} disabled{/if}>
+        <input type="number" class="form-control" id="recent-count" name="recent_count" value="{$recent_count}"{if="!$recent_public"} disabled{/if}>
       </div>
-      <button type="submit" class="btn btn-default" id="recent-btn"{if="!$recent_public"} disabled{/if}>Submit</button>
-      <input type="hidden" name="generic">
+      <button type="submit" class="btn btn-default" id="recent-btn">Submit</button>
+      <input type="hidden" name="action" value="generic">
     </form>
     <hr/>
     <form role="form" action="ucp.php?page=settings" method="POST">
       <div class="form-group">
         <label for="password_change">New Password</label>
-        <input type="password" class="form-control" id="password_change" placeholder="Password">
+        <input type="password" class="form-control" name="password_change" placeholder="Password">
       </div>
       <div class="form-group">
         <label for="password_verify">Repeat New Password</label>
-        <input type="password" class="form-control" id="password_verify" placeholder="Password">
+        <input type="password" class="form-control" name="password_verify" placeholder="Password">
       </div>
       <button type="submit" class="btn btn-default">Change Password</button>
-      <input type="hidden" name="password">
+      <input type="hidden" name="action" value="password">
     </form>
   </div>
 </div>

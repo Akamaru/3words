@@ -71,7 +71,50 @@ switch ($_GET['page']) {
   case "settings": {
     check_privileges();
     
-    $tpl->draw("settings");
+    if (!isset($_POST['action'])) {
+      $tpl->draw("settings");
+    } else {
+      switch ($_POST['action']) {
+        case "generic": {
+          if (isset($_POST['sitename'])) {
+            $sql->query("UPDATE `config` SET `value`='" . $sql->real_escape_string(trim($_POST['sitename'])) . "' WHERE `key`='sitename'");
+          }
+          if (isset($_POST['recent_check'])) {
+            $sql->query("UPDATE `config` SET `value`='true' WHERE `key`='recent_public'");
+          } else {
+            $sql->query("UPDATE `config` SET `value`='false' WHERE `key`='recent_public'");
+          }
+          if (isset($_POST['recent_count'])) {
+            if (is_numeric($_POST['recent_count'])) {
+              $sql->query("UPDATE `config` SET `value`='" . (int) $_POST['recent_count'] . "' WHERE `key`='recent_count'");
+            }
+          }
+          $_SESSION['flash'] = "Successfully saved changes.";
+          header('Location: ucp.php?page=settings');
+          exit();
+          break;
+        }
+        case "password": {
+          if (isset($_POST['password_change']) && isset($_POST['password_verify'])) {
+            if ($_POST['password_change'] === $_POST['password_verify']) {
+              if (strlen($_POST['password_change']) > 3) {
+                $sql->query("UPDATE `config` SET `value`='" . $sql->real_escape_string(crypt_password($_POST['password_change'], gen_salt(22))) . "' WHERE `key`='password';");
+                $_SESSION['flash'] = "Successfully changed password.";
+                header('Location: ucp.php?page=settings');
+                exit();
+              }
+            }
+          }
+          $_SESSION['flash'] = "The passwords did not match or your password is shorter than 3 characters.";
+          header('Location: ucp.php?page=settings');
+          exit();
+          break;
+        }
+        default: {
+          $tpl->draw("settings");
+        }
+      }
+    }
     break;
   }
   case "inbox":

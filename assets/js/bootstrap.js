@@ -2113,7 +2113,5 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
 }(jQuery);
 function a(b){
-  var c = document.getElementById("recent-count");
-  var d = document.getElementById("recent-btn");
-  c.disabled = d.disabled = b;
+  document.getElementById("recent-count").disabled = b;
 }
