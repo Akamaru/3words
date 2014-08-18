@@ -41,6 +41,10 @@ function crypt_password ($pass, $salt) {
 // the
 session_start();
 
+if (!isset($_SESSION['logged_in'])) {
+  $_SESSION['logged_in'] = false;
+}
+
 if (!isset($notemplate)) {
   require_once 'ext/rain.tpl.class.php';
   
@@ -48,4 +52,24 @@ if (!isset($notemplate)) {
   raintpl::configure("tpl_dir", "views/");
   
   $tpl = new RainTPL;
+  
+  // new words counter
+  $new_words_count = -1;
+  if ($_SESSION['logged_in'] === true) {
+    $res = $sql->query("SELECT `id` FROM `words` WHERE `new` = 1;");
+    $new_words_count = $res->num_rows;
+  }
+  
+  // total words count
+  $res = $sql->query("SELECT `id` FROM `words`;");
+  $words_total_count = $res->num_rows * 3;
+  
+  // site name
+  $res = $sql->query("SELECT `value` FROM `config` WHERE `key` = \"sitename\";")->fetch_assoc();
+  $site_name = htmlspecialchars($res['value']);
+  
+  $tpl->assign("logged_in", $_SESSION['logged_in']);
+  $tpl->assign("site_name", $site_name);
+  $tpl->assign("words_total", $words_total_count);
+  $tpl->assign("inbox_count", $new_words_count);
 }
