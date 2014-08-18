@@ -26,16 +26,20 @@
   <input type="hidden" name="words">
 </form>
 {if="$recent_answers"}
-<h4>Recent Answers by others:</h4>
-<table class="table table-responsive table-bordered table-condensed">
-  <tbody>
-    {loop="$recent"}
-      <tr>
-        <td><b>{$value.author}</b> wrote that {$user_name} is <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span></td>
-      </tr>
-    {/loop}
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-8">
+    <h4>Recent Answers by others:</h4>
+    <table class="table table-responsive table-bordered table-condensed">
+      <tbody>
+        {loop="$recent"}
+          <tr>
+            <td><b>{$value.author}</b> wrote that {$user_name} is <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span></td>
+          </tr>
+        {/loop}
+      </tbody>
+    </table>
+  </div>
+</div>
 {/if}
 </div>
 {include="footer"}
