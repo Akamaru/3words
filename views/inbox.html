@@ -17,7 +17,7 @@
     <tbody>
     {loop="$words"}
       <tr>
-        <td><b>{$value.author}</b> thinks that you are <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span><a class="float-right" href="#"><i class="glyphicon glyphicon-remove"></i></a></td>
+        <td id="words-{$value.id}"><b>{$value.author}</b> thinks that you are <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span><a class="float-right" href="#" class="text-danger" onclick="b(this)" data-word-id="{$value.id}"><i class="glyphicon glyphicon-remove"></i></a></td>
       </tr>
     {/loop}
     </tbody>

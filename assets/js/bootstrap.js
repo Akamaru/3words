@@ -2112,6 +2112,17 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   })
 
 }(jQuery);
-function a(b){
+function a(b) {
   document.getElementById("recent-count").disabled = b;
+}
+function b(x) {
+  x.preventDefault();
+  $.get("ucp.php?page=ajax&action=delete-word&id=" + x.dataset.wordId,
+    function (d) {
+      d = JSON.parse(d);
+      if (d.success) {
+        document.getElementById("words-" + x.dataset.wordId).outerHTML="";
+      }
+    }
+  );
 }

@@ -23,7 +23,6 @@ include_once 'config.php';
 function check_privileges($ajax = false) {
   if (!$_SESSION['logged_in']) {
     if ($ajax) {
-      header('Content-Type: application/javascript');
       echo json_encode(array("success" => false));
     } else {
       $_SESSION['flash'] = "Log in to continue.";
@@ -36,7 +35,6 @@ function check_privileges($ajax = false) {
 switch ($_GET['page']) {
   case "ajax": {
     check_privileges(true);
-    header('Content-Type: application/javascript');
     $response = array("success" => false);
     switch ($_GET['action']) {
       case "delete-word": {
@@ -52,6 +50,7 @@ switch ($_GET['page']) {
       }
     }
     echo json_encode($response);
+    exit();
     break;
   }
   case "login": {
