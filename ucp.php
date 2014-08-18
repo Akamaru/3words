@@ -146,7 +146,7 @@ switch ($_GET['page']) {
   default: {
     check_privileges();
     
-    $sql_str = "SELECT `id`, `word1`, `word2`, `word3`, `author`, `new` FROM `words`;";
+    $sql_str = "SELECT `id`, `word1`, `word2`, `word3`, `author`, `new` FROM `words` ORDER BY `id` DESC;";
     $res = $sql->query($sql_str);
     
     $words = array();
