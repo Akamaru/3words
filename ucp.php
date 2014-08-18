@@ -78,6 +78,25 @@ switch ($_GET['page']) {
   default: {
     check_privileges();
     
+    $sql_str = "SELECT `word1`, `word2`, `word3`, `author`, `new` FROM `words`;";
+    $res = $sql->query($sql_str);
+    
+    $words = array();
+    
+    while ($r = $res->fetch_assoc()) {
+      array_push($words, array(
+        "word1"  =>  $r['word1'],
+        "word2"  =>  $r['word2'],
+        "word3"  =>  $r['word3'],
+        "author" =>  $r['author'],
+        "new"    => ($r['new'] == 1 ? true : false)
+      ));
+    }
+    
+    $sql_str = "UPDATE `words` SET `new` = 0;";
+    $sql->query($sql_str);
+    
+    $tpl->assign("words", $words);
     $tpl->draw("inbox");
   }
 }
