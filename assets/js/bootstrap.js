@@ -2116,7 +2116,6 @@ function a(b) {
   document.getElementById("recent-count").disabled = b;
 }
 function b(x) {
-  x.preventDefault();
   $.get("ucp.php?page=ajax&action=delete-word&id=" + x.dataset.wordId,
     function (d) {
       d = JSON.parse(d);
