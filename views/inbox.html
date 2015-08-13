@@ -8,16 +8,16 @@
   <div class="col-md-3">
     <ul class="nav nav-pills nav-stacked">
       <li class="active"><a href="ucp.php?page=inbox">Inbox</a></li>
-      <li><a href="ucp.php?page=settings">Settings</a></li>
+      <li><a href="ucp.php?page=settings">Einstellungen</a></li>
     </ul>
   </div>
   <div class="col-md-9">
-  <h4>Words sent to you:</h4>
+  <h4>Worte an dich gesendet:</h4>
   <table class="table table-responsive table-bordered table-condensed">
     <tbody>
     {loop="$words"}
       <tr>
-        <td id="words-{$value.id}"><b>{$value.author}</b> thinks that you are <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span><a class="float-right" href="#" class="text-danger" onclick="b(this)" data-word-id="{$value.id}"><i class="glyphicon glyphicon-remove"></i></a></td>
+        <td id="words-{$value.id}"><b>{$value.author}</b> findet, dass du <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> und <span class="label label-default">{$value.word3}</span> bist. <a class="float-right" href="#" class="text-danger" onclick="b(this)" data-word-id="{$value.id}"><i class="glyphicon glyphicon-remove"></i></a></td>
       </tr>
     {/loop}
     </tbody>

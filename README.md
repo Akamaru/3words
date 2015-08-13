@@ -2,7 +2,6 @@
 
 ## Installation
 
-Edit `config.php` to your needs.  Afterwards, run `install.php`.  Make sure to
-delete this file after installation.
-
-Don't forget to make the `tmp` directory writable for the webserver user.
+Füge in die `config.php` deine Daten ein.  
+Rufe dann die `install.php` in einem Browser auf.  
+Lösche nach der Installation die `install.php`.

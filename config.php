@@ -9,7 +9,7 @@ $MYSQL_USERNAME = "";
 $MYSQL_PASSWORD = "";
 
 // Please comment or delete the next line.
-die('Please edit config.php!');
+die('Bitte config.php bearbeiten!');
 
 // Don't touch anything below here.
 

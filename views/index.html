@@ -6,21 +6,21 @@
 {/if}
 <h1 class="text-center">{$site_name}!</h1>
 <form method="POST">
-  <p class="text-center">Want to tell them who you are? <input name="author" type="text" class="input-xs" placeholder="Anonymous"></p>
+  <p class="text-center">Wer bist du? <input name="author" type="text" class="input-xs" placeholder="Ein Äffchen"></p>
   <div class="row">
     <div class="col-sm-4 rowm">
-      <input name="word1" type="text" class="form-control" placeholder="First Word">
+      <input name="word1" type="text" class="form-control" placeholder="Erstes Wort">
     </div>
     <div class="col-sm-4 rowm">
-      <input name="word2" type="text" class="form-control" placeholder="Second Word">
+      <input name="word2" type="text" class="form-control" placeholder="Zweites Wort">
     </div>
     <div class="col-sm-4 rowm">
-      <input name="word3" type="text" class="form-control" placeholder="Third Word">
+      <input name="word3" type="text" class="form-control" placeholder="Drittes Wort">
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
-      <button type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Absenden</button>
     </div>
   </div>
   <input type="hidden" name="words">
@@ -28,12 +28,12 @@
 {if="$recent_public"}
 <div class="row recent-margin">
   <div class="col-md-offset-2 col-md-8">
-    <h4>Recent Answers by others:</h4>
+    <h4>Was andere denken:</h4>
     <table class="table table-responsive table-bordered table-condensed">
       <tbody>
         {loop="$words"}
           <tr>
-            <td><b>{$value.author}</b> wrote that {$user_name} is <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> and <span class="label label-default">{$value.word3}</span></td>
+            <td><b>{$value.author}</b> schrieb, dass {$user_name} <span class="label label-default">{$value.word1}</span>, <span class="label label-default">{$value.word2}</span> und <span class="label label-default">{$value.word3}</span> ist.</td>
           </tr>
         {/loop}
       </tbody>

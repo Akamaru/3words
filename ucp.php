@@ -25,7 +25,7 @@ function check_privileges($ajax = false) {
     if ($ajax) {
       echo json_encode(array("success" => false));
     } else {
-      $_SESSION['flash'] = "Log in to continue.";
+      $_SESSION['flash'] = "Einloggen um fortzufahren.";
       header('Location: ucp.php?page=login');
     }
     exit();
@@ -55,7 +55,7 @@ switch ($_GET['page']) {
   }
   case "login": {
     if ($_SESSION['logged_in']) {
-      $_SESSION['flash'] = "You're already logged in.";
+      $_SESSION['flash'] = "Du bist bereits eingeloggt.";
       header('Location: ucp.php');
       exit();
     }
@@ -70,12 +70,12 @@ switch ($_GET['page']) {
       if (($_POST['username'] === $username) && ($post_pass === $password)) {
         // successful login
         $_SESSION['logged_in'] = true;
-        $_SESSION['flash'] = "You are now logged in.";
+        $_SESSION['flash'] = "Erfolgreich eingeloggt.";
         header('Location: ucp.php');
         exit();
       } else {
         // failed login
-        $_SESSION['flash'] = "Wrong user name or password";
+        $_SESSION['flash'] = "Falscher Name oder Passwort";
         header('Location: ucp.php?page=login');
         exit();
       }
@@ -87,7 +87,7 @@ switch ($_GET['page']) {
     
     session_destroy();
     session_start();
-    $_SESSION['flash'] = "Sucessfully logged out";
+    $_SESSION['flash'] = "Erfolgreich ausgeloggt.";
     header('Location: index.php');
     exit();
     break;
@@ -113,7 +113,7 @@ switch ($_GET['page']) {
               $sql->query("UPDATE `config` SET `value`='" . (int) $_POST['recent_count'] . "' WHERE `key`='recent_count'");
             }
           }
-          $_SESSION['flash'] = "Successfully saved changes.";
+          $_SESSION['flash'] = "Änderungen erfolgreich gespeichert.";
           header('Location: ucp.php?page=settings');
           exit();
           break;
@@ -123,13 +123,13 @@ switch ($_GET['page']) {
             if ($_POST['password_change'] === $_POST['password_verify']) {
               if (strlen($_POST['password_change']) > 3) {
                 $sql->query("UPDATE `config` SET `value`='" . $sql->real_escape_string(crypt_password($_POST['password_change'], gen_salt(22))) . "' WHERE `key`='password';");
-                $_SESSION['flash'] = "Successfully changed password.";
+                $_SESSION['flash'] = "Passwort erfolgreich geändert.";
                 header('Location: ucp.php?page=settings');
                 exit();
               }
             }
           }
-          $_SESSION['flash'] = "The passwords did not match or your password is shorter than 3 characters.";
+          $_SESSION['flash'] = "Das Passwort stimmt nicht überein oder ist zu kurz.";
           header('Location: ucp.php?page=settings');
           exit();
           break;

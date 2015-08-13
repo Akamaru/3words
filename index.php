@@ -41,7 +41,7 @@ if (isset($_POST['words'])) {
   $word2 = check_word("word2");
   $word3 = check_word("word3");
   if ($word1 === false || $word2 === false || $word3 === false) {
-    $_SESSION['flash'] = "Not all words entered are valid.";
+    $_SESSION['flash'] = "Nicht alle eingegebenen Wörter sind gültig.";
     header("Location: index.php");
     exit();
   }

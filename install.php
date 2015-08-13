@@ -54,23 +54,23 @@ SQL
 ;
 
   if (!$sql->multi_query($sql_str)) { ?>
-<h2>An error occurred</h2>
+<h2>Ein Fehler ist aufgetreten</h2>
 <pre><?php echo $sql->error; ?></pre>
 <form method="POST">
   <input type="hidden" name="step1" value="1">
-  <button type="submit">Retry</button>
+  <button type="submit">Nochmal</button>
 </form>
   <?php } else {
 hell: ?>
 
-<h2>Step 1: Login details</h2>
+<h2>Schritt 1: Login Daten</h2>
 <form method="POST">
-  <label>Site name: <input type="text" name="sitename" value="3words"></label><br />
-  <label>User name: <input type="text" name="username"></label><br />
-  <label>Password: <input type="password" id="p1" name="password"></label><br />
-  <label>Password (again): <input type="password" id="p2" name="passwordconfirm"></label><br />
+  <label>Seiten Name: <input type="text" name="sitename" value="3words"></label><br />
+  <label>User Name: <input type="text" name="username"></label><br />
+  <label>Passwort: <input type="password" id="p1" name="password"></label><br />
+  <label>Passwort wiederholen: <input type="password" id="p2" name="passwordconfirm"></label><br />
   <input type="hidden" name="step2" value="2">
-  <button type="submit">Submit</button>
+  <button type="submit">Weiter</button>
 </form>
 
 <?php }} else if (isset($_POST['step2'])) { // step2: create user
@@ -84,24 +84,24 @@ hell: ?>
              "INSERT INTO `config` (`key`, `value`) VALUES ('recent_public', 'false'); " .
              "INSERT INTO `config` (`key`, `value`) VALUES ('recent_count', '5');";
   if (!$sql->multi_query($sql_str)) { ?>
-<h2>An error occurred</h2>
+<h2>Ein Fehler ist aufgetreten</h2>
 <pre><?php echo $sql->error; ?></pre>
 <form method="POST">
-  <label>Site name: <input type="text" name="sitename" value="<?php echo htmlspecialchars($_POST['sitename']); ?>"></label><br />
-  <label>User name: <input type="text" name="username" value="<?php echo htmlspecialchars($_POST['username']); ?>"></label><br />
-  <label>Password: <input type="password" id="p1" name="password"></label><br />
-  <label>Password (again): <input type="password" id="p2" name="passwordconfirm"></label><br />
+  <label>Seiten Name: <input type="text" name="sitename" value="<?php echo htmlspecialchars($_POST['sitename']); ?>"></label><br />
+  <label>User Name: <input type="text" name="username" value="<?php echo htmlspecialchars($_POST['username']); ?>"></label><br />
+  <label>Passwort: <input type="password" id="p1" name="password"></label><br />
+  <label>Passwort wiederholen: <input type="password" id="p2" name="passwordconfirm"></label><br />
   <input type="hidden" name="step2" value="2">
-  <button type="submit">Retry</button>
+  <button type="submit">Nochmal</button>
 </form>
   <?php } else { ?>
-<h2>Step 3: Enjoy!</h2>
-You now should delete this file.  Have fun.
+<h2>Schritt 3: Viel Spaß!</h2>
+Bitte lösche nun die install.php
 <?php }} else { // step 0: click next to continue ?>
-  <h2>Step 0: Click the damn button to start</h2>
+  <h2>Schritt 0: Klick auf den Button um zu starten!</h2>
   <form method="POST">
     <input type="hidden" name="step1" value="1">
-    <button type="submit">Click me hard!</button>
+    <button type="submit">Klick mich!</button>
   </form>
 <?php } ?>
 
